@@ -1,3 +1,50 @@
+// --- SNIPPET VISIBILITY ---
+
+//  -------- toggle the <pre> html code snippet tag for display and visibility (and adding a class with styling) (roman and palindrome) by passing snippet div and button IDs to snippetToggle() function ----
+
+document.getElementById("palindrome-show-hide").onclick = function () { snippetToggle("palindrome-snippet", "palindrome-show-hide"); };
+
+document.getElementById("roman-show-hide").onclick = function () { snippetToggle("roman-snippet", "roman-show-hide"); };
+
+// --- code snippet TOGGLE visbility function ----
+
+function snippetToggle(snippetID, buttonID) {
+    const displayCheck = document.getElementById(snippetID).style.display;
+
+    if (displayCheck === "") {
+        document.getElementById(snippetID).style.display = "flex";
+        document.getElementById(snippetID).style.visibility = "visible";
+        document.getElementById(buttonID).innerText = "Hide";
+        return;
+    } else {
+        document.getElementById(snippetID).style.display = "";
+        document.getElementById(snippetID).style.visibility = "hidden";
+        document.getElementById(buttonID).innerText = "show me";
+        return;
+    }
+
+}
+
+// ---- toggle explain code button for roman and the explaination below ---
+
+document.getElementById("roman-explain-btn").onclick = function() {
+    const displayCheck = document.getElementById("roman-explain").style.display;
+
+    if (displayCheck === "") {
+        document.getElementById("roman-explain").style.display = "flex";
+        document.getElementById("roman-explain").style.visibility = "visible";
+        document.getElementById("roman-explain-btn").innerText = "Hide";
+        return;
+    } else {
+        document.getElementById("roman-explain").style.display = "";
+        document.getElementById("roman-explain").style.visibility = "hidden";
+        document.getElementById("roman-explain-btn").innerText = "explain code";
+        return;
+    }
+
+}
+
+
 // --- PALINDROME ---
 
 // --- calling palindromeCheck() (which manipulates DOM) if palidrome CHECK button is CLICKED ----

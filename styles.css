@@ -309,6 +309,25 @@ form * {
 
 /*---- CODE SNIPPET SECTION ---*/
 
+#palindrome-snippet {
+    display: none;
+    visibility: hidden;
+}
+
+#roman-snippet {
+    display: none;
+    visibility: hidden;
+}
+
+#roman-explain {
+    display: none;
+    visibility: hidden;
+    flex-direction: column;
+}
+
+section h2 {
+    margin-bottom: 1em;
+}
 
 .code-snippet-section {
     border-top: 5px dotted var(--alt-accent);
