@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>aLitteWebpage: hmoffat's litle bits of code</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script defer src="index.js"></script>
 
     <!--fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,8 +16,8 @@
     />
 
     <!-- prism for code snippet syntax-->
-    <link rel="stylesheet" href="prism.css" />
-    <script defer src="prism.js"></script>
+    <link rel="stylesheet" href="/prism/prism.css" />
+    <script defer src="/prism/prism.js"></script>
   </head>
 
   <body id="top">
@@ -44,18 +42,18 @@
     </header>
     <nav>
       <!--- hide Home in mobile view-->
-      <ul>
+      <ul class="hidden">
         <li><a href="top"> Home </a></li>
       </ul>
       <!--- Show in ALL views-->
       <h2>someLittleAlgorithms</h2>
-      <ul>
+      <ul class="nav-algorithms">
         <li><a href="#palindrome"> Palindrome Checker </a></li>
         <li><a href="#roman"> Roman Numeral Converter </a></li>
         <li>Ceasar's Cipher (coming soon)</li>
       </ul>
       <h2>aLittleProject</h2>
-      <ul>
+      <ul class="nav-project">
         <li>Coming Soon</li>
       </ul>
     </nav>
@@ -98,23 +96,23 @@
             <!-- DO NOT DELETE JS FUNCTION it is not a comment it is code snippet-->
             <pre>
                         <code class="language-js">
-                            function palindrome(str) {
+function palindrome(str) {
 
-                                // remove non alphabet & numerical characters
-                                const alphaArr = str.split('').filter((char) => /[a-z0-9]/i.test(char));
-                                
-                                // create reverse
-                                const reverseArr = alphaArr.toReversed();
-                                
-                                // make forwards and backwards lowercase strings
-                                const alphaStr = alphaArr.join('').toLowerCase();
-                                
-                                const reverseStr = reverseArr.join('').toLowerCase();
-                                
-                                
-                                //check for equality
-                                return reverseStr === alphaStr;
-                                }
+    // remove non alphabet & numerical characters
+    const alphaArr = str.split('').filter((char) => /[a-z0-9]/i.test(char));
+    
+    // create reverse
+    const reverseArr = alphaArr.toReversed();
+    
+    // make forwards and backwards lowercase strings
+    const alphaStr = alphaArr.join('').toLowerCase();
+    
+    const reverseStr = reverseArr.join('').toLowerCase();
+    
+    
+    //check for equality
+    return reverseStr === alphaStr;
+    }
 
                         </code>
                     </pre>
@@ -154,71 +152,71 @@
             <!-- DO NOT DELETE JS FUNCTION it is not a comment it is code snippet-->
             <pre>
                     <code class="language-js">
-                        function convertToRoman(num) {
+function convertToRoman(num) {
 
-                            const romanNums = [
-                        
-                                ["M", null, null],
-                        
-                                ["C", "D", "M"],
-                        
-                                ["X", "L", "C"],
-                        
-                                ["I", "V", "X"]
-                        
-                            ];
-                        
-                          
-                        
-                            const numArr = num.toString().split('');
-                        
-                            const romanArr = numArr.map(convert)
-                        
-                          
-                        
-                            function convert(digit, indexOfDigit, array) {
-                        
-                                let numeral = []
-                        
-                                const currentRomNest= romanNums.length - (array.length - indexOfDigit);
-                        
-                          
-                        
-                                for (let i = 1; i <= digit; i++) {
-                        
-                                    if (i <= 3 || i >= 6 && i <= 8) {
-                        
-                                        numeral.push(romanNums[currentRomNest][0])
-                        
-                                    } else if (i === 4 || i === 9) {
-                        
-                                        const indexCurrentLetter = romanNums[currentRomNest].indexOf(numeral[0]);
-                        
-                                        const nextLetter = romanNums[currentRomNest][indexCurrentLetter + 1]
-                        
-                          
-                        
-                                        numeral.push(nextLetter)
-                        
-                                        numeral = numeral.slice(-2)
-                        
-                          
-                        
-                                    } else if (i === 5) {
-                        
-                                        numeral.splice(0, 1);
-                        
-                                    }
-                        
-                                }
-                        
-                                return numeral.join('')
-                        
-                            }
-                        
-                            return romanArr.join('')
-                        }
-                        
+    const romanNums = [
+
+        ["M", null, null],
+
+        ["C", "D", "M"],
+
+        ["X", "L", "C"],
+
+        ["I", "V", "X"]
+
+    ];
+
+    
+
+    const numArr = num.toString().split('');
+
+    const romanArr = numArr.map(convert)
+
+    
+
+    function convert(digit, indexOfDigit, array) {
+
+        let numeral = []
+
+        const currentRomNest= romanNums.length - (array.length - indexOfDigit);
+
+    
+
+        for (let i = 1; i <= digit; i++) {
+
+            if (i <= 3 || i >= 6 && i <= 8) {
+
+                numeral.push(romanNums[currentRomNest][0])
+
+            } else if (i === 4 || i === 9) {
+
+                const indexCurrentLetter = romanNums[currentRomNest].indexOf(numeral[0]);
+
+                const nextLetter = romanNums[currentRomNest][indexCurrentLetter + 1]
+
+    
+
+                numeral.push(nextLetter)
+
+                numeral = numeral.slice(-2)
+
+    
+
+            } else if (i === 5) {
+
+                numeral.splice(0, 1);
+
+            }
+
+        }
+
+        return numeral.join('')
+
+    }
+
+    return romanArr.join('')
+}
+
 
                     </code>
                 </pre>
@@ -254,13 +252,14 @@
         </div>
       </section>
       <section id="cipher">
-        <h1>Coming Soon</h1>
+        <h1>Cipher Coming Soon</h1>
       </section>
     </main>
     <footer>
       <!--- TODO:: a link to github profile or this repo?-->
+     
+      <a href="https://github.com/hMoffat/aLittleWebpage">My Github</a> 
       <img src="/images/github-mark-white.png" alt="github invertocat logo" />
-      <a href="https://github.com/hMoffat/aLittleWebpage">My Github</a>
     </footer>
   </body>
 </html>
