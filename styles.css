@@ -298,6 +298,13 @@ form * {
 
 }
 
+/*---ROMAN --- */
+
+#roman-reveal {
+    display: none;
+    visibility: hidden;
+}
+
 
 
 /*---- CODE SNIPPET SECTION ---*/

@@ -62,7 +62,38 @@ function palindrome(str) {
 
 // --- ROMAN NUMERALS ---
 
+// --- calling romanCheck() (which manipulates DOM) if roman CHECK button is CLICKED ----
 
+document.getElementById("roman-convert").onclick = function() { romanCheck()}
+
+//---- calling romanCheck() (which manipulates DOM) if roman INPUT FIELD ACTIVE and ENTER PRESSED ----
+
+document.getElementById("number-input").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        romanCheck();
+    }
+})
+
+// --- romanCheck() function to manipulate DOM with results of ()convertToRoman() function -----
+
+function romanCheck() {
+    const numInput = document.getElementById("number-input").value; 
+    const numParse = parseInt(numInput);
+    const romanCheck = convertToRoman(numParse);
+    console.log(numInput);
+
+    if (typeof romanCheck === "" || isNaN(numParse)) {
+        return window.alert("That's not a number! Please enter a whole number using numerical digits.")
+    } else {
+        document.getElementById("num-in-roman").innerText = `${numParse} in roman numerals is...`;
+        document.getElementById("roman-result").innerText = `${romanCheck}`;
+        document.getElementById("roman-reveal").classList.add("add-class-reveal");
+        document.getElementById("roman-reveal").style.display = "flex";
+        document.getElementById("roman-reveal").style.visibility = "visible"; 
+        return;
+    }
+}
 
 
 // ----- ROMAN NUMERALS FUNCTION -----
