@@ -1,9 +1,9 @@
 /* TODO::
 * fall back fonts (not just 'sans-serif)
-* arialabels etc
 * resposive sizing upward - tablet, desktop
 * Style light/dark mode button
 * change nav links to buttons with same styling and a click effect
+* get tablet view nav bar to scroll
 */
 
 
@@ -371,6 +371,14 @@ pre {
     font-family: var(--heading-font), sans-serif;
 }
 
+#roman-snippet {
+    overflow-x: scroll;
+}
+
+#palindrome-snippet {
+    overflow-x: scroll;
+}
+
 /*----- TODO:: --------*/
 
 #roman {
@@ -401,3 +409,81 @@ img {
     width: 20px;
     margin-left: 20px;
 }
+
+
+
+/* ---------- TABLET VIEW ----------*/
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    body {
+        grid-template-columns: minmax(auto, 200px) 2fr;
+        row-gap: 20px;
+        column-gap: 0px;
+        grid-template-areas: 
+            "nav header"
+            "nav header"
+            "nav main"
+            "nav footer";
+        grid-auto-rows: minmax(50vh, auto) minmax(50vh, auto) auto auto;
+    }
+
+    nav {
+        background-color: var(--alt-light-shade);
+        padding: 25px;
+    }
+
+    nav ul {
+        grid-template-columns: 1fr;
+        width: auto;
+    }
+
+    .nav-project {
+    
+        
+    }
+    
+    .nav-project li {
+        height: 100px;
+        width: 100px; 
+        padding: 2px;
+        text-align: center;
+
+    
+    }
+
+    nav h2 {
+        color: var(--alt-dark-shade);
+        text-wrap: wrap;
+    }
+
+    ul.hidden {
+        display: flex;
+
+    }
+
+
+    header {
+        justify-content: space-evenly;
+    }
+    
+
+}
+
+/* --- DESKTOP ---*/
+
+/*
+@media (min-width: 768px) {
+    body {
+        grid-template-columns: repeat(12, 1fr);
+        row-gap: 20px;
+        column-gap: 0px;
+        grid-template-areas: 
+            "nav header"
+            "nav header"
+            "nav main"
+            "nav footer";
+        grid-auto-rows: minmax(50vh, auto) minmax(50vh, auto) auto auto;
+    }
+}
+*/
