@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aLitteWebpage: hmoffat's litle bits of code</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="index.js"></script>
+
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Open+Sans:wght@300;400;500;600&family=Quicksand:wght@300&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- prism for code snippet syntax-->
+    <link rel="stylesheet" href="prism.css" />
+    <script defer src="prism.js"></script>
+  </head>
+
+  <body id="top">
+    <header>
+      <div class="title">
+        <p>Welcome.</p>
+        <h1>aLittleWebpage</h1>
+        <h2>by Helen Moffat</h2>
+      </div>
+      <section class="intro">
+        <ul>
+          <li>
+            a place to show my friends and family some examples of what I've
+            been doing
+          </li>
+          <li>
+            and a playground to practise the things I'm learning including HTML,
+            CSS, JS, design principles and accessibility principles
+          </li>
+        </ul>
+      </section>
+    </header>
+    <nav>
+      <!--- hide Home in mobile view-->
+      <ul>
+        <li><a href="top"> Home </a></li>
+      </ul>
+      <!--- Show in ALL views-->
+      <h2>someLittleAlgorithms</h2>
+      <ul>
+        <li><a href="#palindrome"> Palindrome Checker </a></li>
+        <li><a href="#roman"> Roman Numeral Converter </a></li>
+        <li>Ceasar's Cipher (coming soon)</li>
+      </ul>
+      <h2>aLittleProject</h2>
+      <ul>
+        <li>Coming Soon</li>
+      </ul>
+    </nav>
+    <main>
+      <section id="palindrome">
+        <div class="feature-intro">
+          <h1>Palindrome Checker</h1>
+          <p>Is it a palindrome?</p>
+          <p>
+            A palindrome is a word or phrase that reads the same backwards or
+            forwards. Examples include "YAY!" and "Was it a car or a cat I saw?"
+          </p>
+          <p>(Only letter and number characters will be checked.)</p>
+        </div>
+        <form>
+          <label for="palindrome-str"> Enter the text to check: </label>
+          <div class="input-with-btn">
+            <input type="text" id="palindrome-str" />
+            <button
+              type="button"
+              id="check-palindrome"
+              class="btn-reset btn reveal-btn"
+            >
+              Check!
+            </button>
+          </div>
+        </form>
+        <div class="reveal" id="palindrome-reveal">
+          <h2 id="palindrome-answer">Answer!</h2>
+          <p id="is-or-not">It is ? a palindrome.</p>
+        </div>
+        <div class="code-snippet-section">
+          <div class="view-code-invite">
+            <h2>Want to see the code?</h2>
+            <button type="button" class="btn-reset btn snippet-btn">
+              show me
+            </button>
+          </div>
+          <div class="palindrome-code">
+            <!-- DO NOT DELETE JS FUNCTION it is not a comment it is code snippet-->
+            <pre>
+                        <code class="language-js">
+                            function palindrome(str) {
+
+                                // remove non alphabet & numerical characters
+                                const alphaArr = str.split('').filter((char) => /[a-z0-9]/i.test(char));
+                                
+                                // create reverse
+                                const reverseArr = alphaArr.toReversed();
+                                
+                                // make forwards and backwards lowercase strings
+                                const alphaStr = alphaArr.join('').toLowerCase();
+                                
+                                const reverseStr = reverseArr.join('').toLowerCase();
+                                
+                                
+                                //check for equality
+                                return reverseStr === alphaStr;
+                                }
+
+                        </code>
+                    </pre>
+          </div>
+        </div>
+      </section>
+      <section id="roman">
+        <div class="feature-intro">
+          <h1>Roman Numeral Converter</h1>
+          <p>
+            Convert any whole number up to 3999 (currently) into roman numerals.
+          </p>
+          <p>For instance, 12 would be XII and 44 would be XLIV.</p>
+        </div>
+        <form>
+          <label for="number-input"> Enter the number to convert </label>
+          <div class="input-with-btn">
+            <input type="number" id="number-input" />
+            <button type="button" class="btn-reset btn reveal-btn">
+              Convert!
+            </button>
+          </div>
+        </form>
+        <div class="reveal" id="roman-reveal">
+          <p id="num-in-roman">??? in roman numerals is...</p>
+          <h2 id="roman-result">???</h2>
+        </div>
+        <div class="code-snippet-section">
+          <div class="view-code-invite">
+            <h2>Want to see the code?</h2>
+            <button type="button" class="btn-reset btn snippet-btn">
+              show me
+            </button>
+          </div>
+
+          <div class="roman-code">
+            <!-- DO NOT DELETE JS FUNCTION it is not a comment it is code snippet-->
+            <pre>
+                    <code class="language-js">
+                        function convertToRoman(num) {
+
+                            const romanNums = [
+                        
+                                ["M", null, null],
+                        
+                                ["C", "D", "M"],
+                        
+                                ["X", "L", "C"],
+                        
+                                ["I", "V", "X"]
+                        
+                            ];
+                        
+                          
+                        
+                            const numArr = num.toString().split('');
+                        
+                            const romanArr = numArr.map(convert)
+                        
+                          
+                        
+                            function convert(digit, indexOfDigit, array) {
+                        
+                                let numeral = []
+                        
+                                const currentRomNest= romanNums.length - (array.length - indexOfDigit);
+                        
+                          
+                        
+                                for (let i = 1; i <= digit; i++) {
+                        
+                                    if (i <= 3 || i >= 6 && i <= 8) {
+                        
+                                        numeral.push(romanNums[currentRomNest][0])
+                        
+                                    } else if (i === 4 || i === 9) {
+                        
+                                        const indexCurrentLetter = romanNums[currentRomNest].indexOf(numeral[0]);
+                        
+                                        const nextLetter = romanNums[currentRomNest][indexCurrentLetter + 1]
+                        
+                          
+                        
+                                        numeral.push(nextLetter)
+                        
+                                        numeral = numeral.slice(-2)
+                        
+                          
+                        
+                                    } else if (i === 5) {
+                        
+                                        numeral.splice(0, 1);
+                        
+                                    }
+                        
+                                }
+                        
+                                return numeral.join('')
+                        
+                            }
+                        
+                            return romanArr.join('')
+                        }
+                        
+
+                    </code>
+                </pre>
+          </div>
+          <div class="code-explain-invite">
+            <button type="button" class="btn-reset btn snippet-btn">
+              explain code
+            </button>
+          </div>
+          <div class="code-explain">
+            <h3>How does the code work?</h3>
+            <p>
+              I wanted to see if it was possible to solve this without putting
+              every possibility for each unit in the roman numeral lookup array.
+              Instead, each decimal unit set has three possible letters that get
+              used to build up the full numeral set by utilising the index
+              position of the lookup array in relation to the the index position
+              of each digit from the number given to the function.
+            </p>
+            <p>
+              For each of these digits, a counter is reset and counts up to the
+              value of the digit. A set of conditionals then build up that
+              unit's part of the numeral (including removing sections if needed)
+              based on the corresponding decimal unit set in the roman numeral
+              lookup array, until the counter finishes.
+            </p>
+            <p>
+              Once all digits have been iterated over, the results are joined
+              back into a string and this is returned as the result of the
+              function.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="cipher">
+        <h1>Coming Soon</h1>
+      </section>
+    </main>
+    <footer>
+      <!--- TODO:: a link to github profile or this repo?-->
+      <img src="/images/github-mark-white.png" alt="github invertocat logo" />
+      <a href="https://github.com/hMoffat/aLittleWebpage">My Github</a>
+    </footer>
+  </body>
+</html>
