@@ -490,38 +490,46 @@ img {
     nav {
         z-index: 99;
         display: grid;
+        /* -- The total width is the view port width and the total of the gird column widths and column gaps need to total 100vw. The body outer columns are 20vw so at the moment the nav outer colums 17.5vw + a gap 2.5vw =20vw--*/
         width: 100vw;
-        grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+        grid-template-columns: 17.5vw 20vw 20vw 15vw 17.5vw;
+        column-gap: 2.5vw;
         grid-template-areas: 
             ". . h2-al h2-proj ."
             ". home nav-al nav-proj ."
         ;
         padding: 0;
-
-
-
-
     }
 
+/* --- ul.hidden  --- */
     ul.hidden {
         display: flex;
         grid-area: home;
     }
 
     .h2-al {
-        grid-area: h2-al
+        grid-area: h2-al;
     }
 
     .nav-algorithms {
-        grid-area: nav-al
+        grid-area: nav-al;
     }
 
     .h2-proj {
-        grid-area: h2-proj
+        grid-area: h2-proj;
     }
 
     .nav-project {
-        grid-area: nav-proj
+        grid-area: nav-proj;
+        /* -- display previously grid, change to flex. Width previously 220px - reset. margin bottom previously 20px - reset. --*/
+        display: flex;
+        width: auto;
+        margin-bottom: 0px;
+
+    }
+
+    .nav-project li {
+        background-color: pink;
     }
 
 
@@ -589,7 +597,5 @@ img {
     .hidden li {
         width: auto;
     }
-
-}
-
 */
+}
