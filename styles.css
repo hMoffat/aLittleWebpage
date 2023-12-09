@@ -1,11 +1,12 @@
 /* TODO::
+*increase font size in desktop view(s).
 * fall back fonts (not just 'sans-serif)
-* resposive sizing upward - tablet, desktop
 * Style light/dark mode button
 * change nav links to buttons with same styling and a click effect
 * get tablet view nav bar to scroll
 * and max amout 'by' goes right
 *fix scrolling and sizing when snippets are open
+* make hamburger with a js toggle so that menu can be fixed in desktop and 'home' can be accesded further down the page
 */
 
 
@@ -498,21 +499,26 @@ img {
         display: grid;
         /* -- The total width is the view port width and the total of the grid column widths and the 4 column gaps need to total 100vw. The body outer columns are 20vw so at the moment the nav outer colums 15vw + a gap 5vw =20vw--*/
         width: 100vw;
-        grid-template-columns: 15vw minmax(4.5vw, 7.5vw) minmax(30vw, 35vw) minmax(70px, 7.5vw)  15vw;
+        grid-template-columns: 15vw minmax(4.5vw, 7.5vw) minmax(30vw, 35vw) minmax(100px, 7.5vw)  15vw;
         column-gap: 5vw;
         grid-template-areas: 
             ". . h2-al h2-proj ."
             ". home nav-al nav-proj ."
+            ". bottom-border bottom-border bottom-border ."
         ;
         padding: 0;
-        justify-items: end;
+        justify-items: stretch;
         align-items: center;
-        border-bottom: dashed #869ba9 2px;
+        
         
     }
 
     .bottom-border {
+        display: flex;
         grid-area: bottom-border;
+        height: 2px;
+        width: 100%;
+        background-color: var(--darkest-shade);
     }
 
 /* --- ul.hidden  --- */
@@ -522,8 +528,8 @@ img {
         /* -- width, justify-items, align-self, margin-bottom --*/
         width: auto;
         height: auto;
-        text-align: end;
-        justify-content: end;
+        
+        justify-content: start;
         margin-bottom: 0;
     }
 
@@ -540,8 +546,8 @@ img {
          /* -- margin-bottom was 20px -- */
          margin-bottom: 0;
          /* -- text align was center --*/
-         text-align: end;
-         justify-self: center;
+         
+         justify-self: start;
          text-decoration: underline;
          text-underline-offset: 4px;
     }
@@ -562,6 +568,7 @@ img {
         box-shadow: 0 0 0 0;
         height: auto;
         width: auto;
+        text-align: start;
 
     }
 
@@ -571,9 +578,11 @@ img {
         /* -- margin-bottom was 20px -- */
         margin-bottom: 0;
         /* -- text align was center --*/
-        text-align: end;
+        
         text-decoration: underline;
         text-underline-offset: 4px;
+        
+        text-align: end;
     }
 
     .nav-project {
@@ -593,6 +602,7 @@ img {
         width: auto;
         /* --box shadow reset --*/
         box-shadow: 0 0 0 0;
+        text-align: start;
     }
 
 /* --- HEADER ---*/
@@ -602,9 +612,62 @@ header {
 }
 
 /* --- Main --- */
-#palindrome, #roman {
+#palindrome, #roman, #cipher {
     background-color: var(--dark-shade);
     margin-bottom: 50px;
-    border-radius: 2%;
+    border-radius: 10px;
 }
+
+#cipher h1 {
+    color: var(--light-shade);
+}
+
+/*---footer---*/
+
+footer {
+    height: 100px;
+    align-items: center;
+    padding-right: 20vw;
+}
+
+footer a {
+    font-size: 1.3rem;
+}
+
+footer a img {
+    width: 35px;
+}
+
+/*--- nav adjustmet wider desktop ---*/
+@media (min-width: 1400px) {
+
+    /*--- NAV ---*/
+    nav {
+        justify-items: end;
+        grid-template-columns: 15vw 15vw 25vw 10vw 15vw;
+        
+    }
+
+    ul.hidden {
+        justify-self: start;
+    }
+
+    .h2-al {
+        justify-self: end;
+    }
+
+    .nav-algorithms {
+        justify-self: end;
+    }
+
+    .nav-algorithms li {
+        text-align: end;
+    }
+
+    /*---- Header ---*/
+
+    .title h2 {
+        align-self: start;
+        margin-left: 220px;
+    }
 }
