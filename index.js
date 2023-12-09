@@ -1,3 +1,7 @@
+// TODO::
+// * Figure out why prism is working for live server from node/VScode but not github deployment.
+// * Or find another way to style code snippets for more readability.
+
 
 // --- SNIPPET VISIBILITY ---
 
