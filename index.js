@@ -1,3 +1,4 @@
+
 // --- SNIPPET VISIBILITY ---
 
 //  -------- toggle the <pre> html code snippet tag for display and visibility (and adding a class with styling) (roman and palindrome) by passing snippet div and button IDs to snippetToggle() function ----

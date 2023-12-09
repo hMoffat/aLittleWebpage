@@ -4,6 +4,8 @@
 * Style light/dark mode button
 * change nav links to buttons with same styling and a click effect
 * get tablet view nav bar to scroll
+* and max amout 'by' goes right
+*fix scrolling and sizing when snippets are open
 */
 
 
@@ -84,6 +86,10 @@ footer {
 }
 
 /* --- ABOVE COVER ---*/
+
+.bottom-border {
+    display: none;
+}
 
 .title {
     color: var(--alt-accent);
@@ -414,7 +420,7 @@ img {
 
 /* ---------- TABLET VIEW ----------*/
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 780px) {
 
     body {
         grid-template-columns: minmax(auto, 200px) 2fr;
@@ -473,7 +479,7 @@ img {
 /* --- DESKTOP ---*/
 
 
-@media (min-width: 768px) {
+@media (min-width: 780px) {
     body {
         grid-template-columns: 20vw 10fr 20vw;
         row-gap: 20px;
@@ -490,33 +496,84 @@ img {
     nav {
         z-index: 99;
         display: grid;
-        /* -- The total width is the view port width and the total of the gird column widths and column gaps need to total 100vw. The body outer columns are 20vw so at the moment the nav outer colums 17.5vw + a gap 2.5vw =20vw--*/
+        /* -- The total width is the view port width and the total of the grid column widths and the 4 column gaps need to total 100vw. The body outer columns are 20vw so at the moment the nav outer colums 15vw + a gap 5vw =20vw--*/
         width: 100vw;
-        grid-template-columns: 17.5vw 20vw 20vw 15vw 17.5vw;
-        column-gap: 2.5vw;
+        grid-template-columns: 15vw minmax(4.5vw, 7.5vw) minmax(30vw, 35vw) minmax(70px, 7.5vw)  15vw;
+        column-gap: 5vw;
         grid-template-areas: 
             ". . h2-al h2-proj ."
             ". home nav-al nav-proj ."
         ;
         padding: 0;
+        justify-items: end;
+        align-items: center;
+        border-bottom: dashed #869ba9 2px;
+        
+    }
+
+    .bottom-border {
+        grid-area: bottom-border;
     }
 
 /* --- ul.hidden  --- */
     ul.hidden {
         display: flex;
         grid-area: home;
+        /* -- width, justify-items, align-self, margin-bottom --*/
+        width: auto;
+        height: auto;
+        text-align: end;
+        justify-content: end;
+        margin-bottom: 0;
+    }
+
+    ul.hidden li {
+        background-color: var(--alt-dark-shade);
+        box-shadow: 0 0 0 0;
+        height: auto;
+        width: auto;
+
     }
 
     .h2-al {
         grid-area: h2-al;
+         /* -- margin-bottom was 20px -- */
+         margin-bottom: 0;
+         /* -- text align was center --*/
+         text-align: end;
+         justify-self: center;
+         text-decoration: underline;
+         text-underline-offset: 4px;
     }
 
     .nav-algorithms {
         grid-area: nav-al;
+        /* -- grid was set to 1fr 1fr, width 200px, grid-auto-rows, gap 20px, justify-items, justify content, slign self, margin-bottom 20px -- */
+        display: flex;
+        width: auto;
+        margin-bottom: 0px;
+        text-align: end;
+        justify-content: end;
     }
+
+    .nav-algorithms li {
+        /* -- box-shadow, background-color, height and width were set to 100px, display flex with align items, justify content and text align set tot center -- */
+        background-color: var(--alt-dark-shade);
+        box-shadow: 0 0 0 0;
+        height: auto;
+        width: auto;
+
+    }
+
 
     .h2-proj {
         grid-area: h2-proj;
+        /* -- margin-bottom was 20px -- */
+        margin-bottom: 0;
+        /* -- text align was center --*/
+        text-align: end;
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
 
     .nav-project {
@@ -525,77 +582,29 @@ img {
         display: flex;
         width: auto;
         margin-bottom: 0px;
+        justify-content: end;
 
     }
 
     .nav-project li {
-        background-color: pink;
-    }
-
-
-/*
-    nav {
-        display: grid;
-        grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
-        grid-template-rows: 50px auto;
-        position: fixed;
-        width: 100vw;
-        justify-items: start;
-        background-color: var(--dark-shade);
-        z-index: 99;
-    }
-
-    nav ul {
-        display: flex;
-        justify-content: start;
-
-       
-    }
-
-*/
-    ul.hidden {
-        display: flex;
-    }
-
-        /*
-        grid-column: 2 / 3;
-        grid-row: 2 / 3;
-        justify-content: start;
+        background-color: var(--alt-dark-shade);
+        /* -- size previously set to height 50px, width 100% -- */
+        height: auto;
         width: auto;
-
+        /* --box shadow reset --*/
+        box-shadow: 0 0 0 0;
     }
 
-    .h2-al {
-        grid-column: 3 / 4;
-        grid-row: 1 / 2;
+/* --- HEADER ---*/
 
-    }
+header {
+    margin-bottom: 50px;
+}
 
-    .h2-proj {
-        grid-column: 4 / 5;
-        grid-row: 1 / 2;
-    }
-
-    .nav-algorithms {
-        grid-column: 3 / 5;
-        grid-row: 2 / 3;
-    }
-
-    .nav-project {
-        grid-column: 4 / 5;
-        grid-row: 2 / 3;
-        width: 105px;
-    }
-
-    nav li {
-        background-color: var(--dark-shade);
-        box-shadow: none;
-        width: auto;
-
-    }
-
-    .hidden li {
-        width: auto;
-    }
-*/
+/* --- Main --- */
+#palindrome, #roman {
+    background-color: var(--dark-shade);
+    margin-bottom: 50px;
+    border-radius: 2%;
+}
 }
